@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmileCare Dental Clinic | Ludhiana</title>
+  <meta name="description"
+    content="SmileCare Dental Clinic — trusted dental care in Ludhiana. Book appointments online for teeth cleaning, whitening, braces, root canal and more." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       RESET & TOKENS
+    ============================================= */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #0B2545;
+      --teal: #1D7D74;
+      --teal-lt: #E6F5F3;
+      --teal-md: #A8D8D4;
+      --white: #FFFFFF;
+      --off: #F7F9FC;
+      --text: #1A1A2E;
+      --muted: #5A6880;
+      --border: #DDE4EE;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(11, 37, 69, .08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Offset for sticky nav (68px) + announcement bar (~38px) */
+    section[id] {
+      scroll-margin-top: 110px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.65;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'DM Serif Display', serif;
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-sm {
+      padding: 60px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--teal-lt);
+      color: var(--teal);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(11, 37, 69, .18);
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    /* =============================================
+       NAV
+    ============================================= */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 35px;
+      font-style: italic;
+      color: var(--navy);
+    }
+
+    .logo span {
+      color: var(--teal);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      transition: color .15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy);
+    }
+
+    .nav-cta {
+      font-size: 14px;
+    }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: .2s;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 16px 24px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 10px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #163366 100%);
+      color: var(--white);
+      padding: 90px 0 75px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: rgba(29, 125, 116, .18);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(29, 125, 116, .12);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #4ECDC4;
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px, 4vw, 45px);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal-md);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, .8);
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust {
+      margin-top: 48px;
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat strong {
+      font-size: 26px;
+      font-family: 'DM Serif Display', serif;
+    }
+
+    .hero-stat p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .65);
+      margin: 0;
+    }
+
+    /* =============================================
+       ANNOUNCEMENT BAR
+    ============================================= */
+    .announcement {
+      background: var(--teal);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .announcement a {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    /* =============================================
+       SERVICES
+    ============================================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(11, 37, 69, .12);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--teal-lt);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* =============================================
+       WHY US
+    ============================================= */
+    .why-us {
+      background: var(--off);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 0;
+    }
+
+    .why-text h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      margin-bottom: 20px;
+    }
+
+    .why-text p {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .why-points {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .why-point {
+      display: flex;
+      gap: 16px;
+    }
+
+    .why-point-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      background: var(--teal-lt);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .why-point h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .why-point p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .why-image-box {
+      background: var(--teal-lt);
+      border-radius: 20px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-image-box {
+        height: 220px;
+      }
+    }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .stars {
+      color: #F5A623;
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    .testi-card p {
+      font-size: 15px;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .testi-author strong {
+      font-size: 14px;
+      display: block;
+    }
+
+    .testi-author span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* =============================================
+       APPOINTMENT / TALLY FORM SECTION
+    ============================================= */
+    .appointment {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .appt-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .appt-left h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      margin-bottom: 16px;
+    }
+
+    .appt-left p {
+      color: rgba(255, 255, 255, .75);
+      font-size: 16px;
+      margin-bottom: 28px;
+    }
+
+    .appt-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .appt-info-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .appt-info-item span {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .appt-info-item p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .appt-info-item strong {
+      color: var(--white);
+      font-size: 15px;
+      display: block;
+    }
+
+    /* Tally form embed container */
+    .tally-wrapper {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 8px;
+      height: 400px;
+
+    }
+
+    /* ⬇️ REPLACE THIS PLACEHOLDER with your actual Tally embed iframe */
+    .tally-wrapper iframe {
+      display: block;
+      width: 100%;
+      min-height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .appt-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* =============================================
+       CONTACT
+    ============================================= */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-item-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background: var(--teal-lt);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-item p {
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .map-box {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 320px;
+      background: var(--teal-lt);
+      border: 1px solid var(--border);
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ⬇️ Map placeholder if no iframe yet */
+    .map-placeholder {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--navy);
+      color: rgba(255, 255, 255, .7);
+      padding: 48px 0 28px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .logo {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-col h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--white);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 14px;
+      transition: color .15s;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* =============================================
+       WHATSAPP FLOATING BUTTON
+    ============================================= */
+    .wa-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
+    }
+
+    .wa-btn:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 28px rgba(37, 211, 102, .5);
+    }
+
+    .wa-btn svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .wa-pulse {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 14px;
+      height: 14px;
+      background: #FF4444;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+    }
+
+    /* =============================================
+       SECTION HEADINGS
+    ============================================= */
+    .section-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 16px;
+      margin-top: 12px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement">
+    🎉 New Patient Special: Free consultation on your first visit. <a href="#appointment">Book now →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#">Smile<span>Care</span> Dental</a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">About Us</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn btn-primary nav-cta" href="#appointment">Book Appointment</a>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services" onclick="toggleMenu()">Services</a>
+      <a href="#why-us" onclick="toggleMenu()">About Us</a>
+      <a href="#testimonials" onclick="toggleMenu()">Reviews</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+      <a href="#appointment" onclick="toggleMenu()" style="color:var(--teal); font-weight:600;">Book Appointment</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-badge"><span class="dot"></span> Trusted by 5,000+ patients in Ludhiana</div>
+        <h1>Your <em>Healthy Smile</em> Starts Here</h1>
+        <p>Expert dental care with a gentle touch. From routine cleanings to complete smile makeovers — we've got every
+          tooth covered.</p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="#appointment">📅 Book Appointment</a>
+          <a class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,.4);" href="#services">Our
+            Services</a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-stat"><strong>15+</strong>
+            <p>Years Experience</p>
+          </div>
+          <div class="hero-stat"><strong>5,000+</strong>
+            <p>Happy Patients</p>
+          </div>
+          <div class="hero-stat"><strong>4.9★</strong>
+            <p>Average Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">What We Offer</span>
+        <h2>Comprehensive Dental Services</h2>
+        <p>From your first check-up to advanced restorative treatments — everything under one roof.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🦷</div>
+          <h3>Teeth Cleaning</h3>
+          <p>Professional scaling and polishing to remove plaque, tartar, and surface stains for a healthier smile.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Teeth Whitening</h3>
+          <p>Advanced whitening treatments that remove years of staining safely in a single session.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Dental Braces</h3>
+          <p>Traditional metal braces and clear aligners to straighten your teeth at every age.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">💊</div>
+          <h3>Root Canal Treatment</h3>
+          <p>Pain-free root canal therapy to save infected teeth and relieve discomfort quickly.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏥</div>
+          <h3>Dental Implants</h3>
+          <p>Permanent tooth replacements that look, feel, and function exactly like natural teeth.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">👶</div>
+          <h3>Pediatric Dentistry</h3>
+          <p>Child-friendly dental care in a calm, welcoming environment your little ones will love.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section why-us" id="why-us">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-text">
+          <span class="tag">Why Choose Us</span>
+          <h2>Dentistry Built Around Your Comfort</h2>
+          <p>We know dental visits can feel anxious. That's why everything at SmileCare is designed to keep you relaxed,
+            informed, and pain-free.</p>
+          <div class="why-points">
+            <div class="why-point">
+              <div class="why-point-icon">🎓</div>
+              <div>
+                <h4>BDS &amp; MDS Certified Doctors</h4>
+                <p>Our team holds advanced dental degrees from reputed Indian universities.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">🏨</div>
+              <div>
+                <h4>Modern Sterilised Equipment</h4>
+                <p>Fully autoclave-sterilised instruments and digital X-rays for your safety.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">📞</div>
+              <div>
+                <h4>Same-Day Emergency Slots</h4>
+                <p>Toothache? We reserve slots every day for urgent dental emergencies.</p>
+              </div>
+            </div>
+            <div class="why-point">
+              <div class="why-point-icon">💳</div>
+              <div>
+                <h4>Flexible Payment Options</h4>
+                <p>UPI, card, cash — and EMI options for major treatments available.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-image-box">🦷</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Patient Stories</span>
+        <h2>What Our Patients Say</h2>
+        <p>Real experiences from real people across Ludhiana.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"I had terrible dental anxiety but the team here made me feel completely at ease. Root canal was painless —
+            actually painless! Highly recommend."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">RS</div>
+            <div><strong>Rajveer Singh</strong><span>Model Town, Ludhiana</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Took my daughter for her first dental visit. The way they handled her was just brilliant — she actually
+            wants to come back! Best pediatric dentist in Ludhiana."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#0F6E56;">PK</div>
+            <div><strong>Priya Kapoor</strong><span>BRS Nagar, Ludhiana</span></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>"Got my teeth whitened before my wedding — the results were stunning. Booking online was so easy and they
+            were very transparent about the cost."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#7F77DD;">AM</div>
+            <div><strong>Ananya Mehta</strong><span>Sarabha Nagar, Ludhiana</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPOINTMENT BOOKING -->
+  <section class="section appointment" id="appointment">
+    <div class="container">
+      <div class="appt-inner">
+        <div class="appt-left">
+          <span class="tag" style="background:rgba(255,255,255,.15); color:#A8D8D4;">Book Appointment</span>
+          <h2>Ready for a Healthier Smile?</h2>
+          <p>Fill the form and we'll confirm your appointment within 2 hours. No waiting on hold.</p>
+          <div class="appt-info">
+            <div class="appt-info-item">
+              <span>🕒</span>
+              <div>
+                <strong>Clinic Hours</strong>
+                <p>Mon–Sat: 9:00 AM – 8:00 PM<br>Sunday: 10:00 AM – 2:00 PM</p>
+              </div>
+            </div>
+            <div class="appt-info-item">
+              <span>📍</span>
+              <div>
+                <strong>Location</strong>
+                <p>123, Civil Lines, Near GT Road,<br>Ludhiana, Punjab – 141001</p>
+              </div>
+            </div>
+            <div class="appt-info-item">
+              <span>📞</span>
+              <div>
+                <strong>Call Us</strong>
+                <p>+91 98760 00000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =============================================
+             TALLY FORM — REPLACE THIS SECTION
+             Steps:
+             1. Go to tally.so and create a free account
+             2. Create a form with fields:
+                - Name, Phone, Email, Service needed, Preferred date
+             3. Click Share → Embed → copy the iframe code
+             4. Replace the div below with that iframe
+        ============================================= -->
+        <div class="tally-wrapper">
+          <iframe src="https://tally.so/embed/44vdZo?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            frameborder="0"></iframe>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="tag">Get In Touch</span>
+        <h2>Find Us</h2>
+        <p>Walk in or call ahead — we're always happy to help.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <strong>Address</strong>
+              <p>123, Civil Lines, Near GT Road,<br>Ludhiana, Punjab – 141001</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <strong>Phone</strong>
+              <p>+91 98760 00000</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📧</div>
+            <div>
+              <strong>Email</strong>
+              <!-- REPLACE with your Zoho email once set up -->
+              <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                  data-cfemail="80f3f5f0f0eff2f4c0f9eff5f2e4efede1e9eeaeefeee5">[email&#160;protected]</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕒</div>
+            <div>
+              <strong>Hours</strong>
+              <p>Mon–Sat: 9 AM – 8 PM<br>Sunday: 10 AM – 2 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- REPLACE src with a real Google Maps embed URL for the clinic's address -->
+        <div class="map-box">
+          "<iframe
+            src="
+            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3428.448138809476!2d76.6066637747374!3d30.761999484219054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ffac4f9bec3fd%3A0x35fa5aa308d007c6!2s2022%2C%20GBP%20Crest%20Rd%2C%20Kharar%2C%20Punjab%20140301!5e0!3m2!1sen!2sin!4v1775388920935!5m2!1sen!2sin"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>"
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="logo" style="color:#fff;">Smile<span style="color:#4ECDC4;">Care</span> Dental</div>
+          <p>Providing compassionate, high-quality dental care to families across Ludhiana since 2009. Your smile is our
+            mission.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Teeth Cleaning</a></li>
+            <li><a href="#services">Teeth Whitening</a></li>
+            <li><a href="#services">Braces</a></li>
+            <li><a href="#services">Root Canal</a></li>
+            <li><a href="#services">Implants</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#why-us">About Us</a></li>
+            <li><a href="#testimonials">Patient Reviews</a></li>
+            <li><a href="#appointment">Book Appointment</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 SmileCare Dental Clinic, Ludhiana. All rights reserved.</p>
+        <p>Built with ❤️ by <a href="#" style="color:#4ECDC4;">Your Agency Name</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <!-- REPLACE 919876000000 with the clinic's actual WhatsApp number (country code + number, no +) -->
+  <a class="wa-btn"
+    href="https://wa.me/919876000000?text=Hi%2C%20I%20would%20like%20to%20book%20a%20dental%20appointment."
+    target="_blank" aria-label="Chat on WhatsApp">
+    <div class="wa-pulse"></div>
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M16 3C8.82 3 3 8.82 3 16c0 2.34.63 4.63 1.82 6.63L3 29l6.56-1.78A13 13 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z"
+        fill="white" />
+      <path
+        d="M22.15 19.55c-.3-.15-1.77-.87-2.04-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07c-1.77-.88-2.93-1.57-4.1-3.56-.31-.53.31-.49.89-1.64.1-.2.05-.37-.03-.52s-.67-1.6-.91-2.19c-.24-.57-.49-.49-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49 1.89.82 2.63.89 3.57.75.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.34z"
+        fill="#25D366" />
+    </svg>
+  </a>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Close mobile menu on outside click
+    document.addEventListener('click', function (e) {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+
+    // Active nav link highlighting on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 115) current = s.getAttribute('id');
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--navy)' : '';
+      });
+    });
+  </script>
